@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>object</title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			//  object 内置函数
+			
+			var obj1 = {name:'张三'};
+			var obj2 = {age:18};
+			var obj3 = {say(){ console.log(1)}}
+			
+			// 1. Object.assign(obj1,obj2,obj3)
+				// 可用于对象的拼接，将obj2，obj3......拼接到对象obj1上，并将obj1返回，obj1改变，其他对象不变。
+				var obj4 = Object.assign(obj1,obj2,obj3)
+				console.log(Object.assign(obj1,obj2,obj3))
+				console.log(obj4)
+			// 2. Object.is(a,b)	
+				//用于判断两个值是否相等,与===类似  返回布尔值
+				Object.is(+0,-0)   //false
+				Object.is(NaN,NaN)  //false
+			// 3. object.defineProperty()	
+				//直接在一个对象上定义一个新属性，或者修改一个对象的现有属性， 并返回这个对象。
+				var obj = new Object()
+				Object.defineProperty(obj,'name',{
+					value:'李四'
+				})
+			// 4. object.defineProperties()
+				//直接在一个对象上定义一个或多个新的属性或修改现有属性，并返回该对象。
+				obj = new Object();
+				Object.defineProperties(obj, {
+				    name: {
+				        value: '张三',
+				        configurable: false,
+				        writable: true,
+				        enumerable: true
+				    },
+				    age: {
+				        value: 18,
+				        configurable: true
+				    }
+				})
+				console.log(obj.name, obj.age) 
+			// 5. object.freeze(obj)
+				//组织修改现有属性的特性和值,并阻止添加新属性
+				obj={name:'张三',age:18};
+				Object.freeze(obj)
+				obj.name='李四';
+				obj.sex='男';
+				console.log(obj) 
+			// 6. for in循环
+				obj = {
+					name:'ls',
+					age:12,
+					sex:'男'
+				}
+				for(var i in obj){
+					console.log(obj[i])
+				}
+			// 7. object.keys(obj)
+				//返回一个数组，包括对象自身的（不含继承的）所有可枚举属性（不含 Symbol 属性）的键名。
+				obj = {
+					name:'ls',
+					age:12,
+					sex:'男'
+				}
+				console.log(Object.keys(obj))
+		</script>
+	</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>defineProperty</title>
+</head>
+<body>
+    <script>
+
+        /*直接在一个对象上定义一个新属性，或者修改一个对象的现有属性， 
+        并返回这个对象。如果不指定configurable, writable, enumerable ，
+        则这些属性默认值为false，如果不指定value, get, set，则这些属性默认值为undefined
+        */
+        //语法: Object.defineProperty(obj, prop, descriptor)
+        var obj = new Object();
+            Object.defineProperty(obj, 'name', {
+                configurable: false,
+                writable: true,
+                enumerable: true,           //该属性是否可枚举
+                value: '张三'
+            })
+            console.log(obj.name)
+
+        var obj = new Object();
+        Object.defineProperty(obj,'name',{
+            configurable: false,
+            writable: true,
+            enumerable: true,
+            value: 'zhangsan'
+        })
+        
+        console.log(obj.name);
+    </script>
+</body>
+</html>
